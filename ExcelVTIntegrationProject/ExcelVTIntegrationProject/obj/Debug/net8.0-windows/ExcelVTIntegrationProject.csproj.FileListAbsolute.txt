@@ -70,3 +70,4 @@ D:\Csharp-Sqlserver-Projects\ExcelVTIntegrationProject\ExcelVTIntegrationProject
 D:\Csharp-Sqlserver-Projects\ExcelVTIntegrationProject\ExcelVTIntegrationProject\obj\Debug\net8.0-windows\ref\ExcelVTIntegrationProject.dll
 D:\Csharp-Sqlserver-Projects\ExcelVTIntegrationProject\ExcelVTIntegrationProject\obj\Debug\net8.0-windows\Interop.Microsoft.Office.Interop.Excel.dll
 D:\Csharp-Sqlserver-Projects\ExcelVTIntegrationProject\ExcelVTIntegrationProject\obj\Debug\net8.0-windows\ExcelVTIntegrationProject.csproj.ResolveComReference.cache
+D:\Csharp-Sqlserver-Projects\ExcelVTIntegrationProject\ExcelVTIntegrationProject\obj\Debug\net8.0-windows\ExcelVTIntegrationProject.sourcelink.json

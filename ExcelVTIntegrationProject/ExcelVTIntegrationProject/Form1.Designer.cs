@@ -30,11 +30,13 @@
         {
             btnVTdenOku = new Button();
             richTextBox1 = new RichTextBox();
+            richTextBox2 = new RichTextBox();
+            btnExceldenOku = new Button();
             SuspendLayout();
             // 
             // btnVTdenOku
             // 
-            btnVTdenOku.Location = new Point(533, 125);
+            btnVTdenOku.Location = new Point(533, 39);
             btnVTdenOku.Name = "btnVTdenOku";
             btnVTdenOku.Size = new Size(171, 83);
             btnVTdenOku.TabIndex = 0;
@@ -44,17 +46,37 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Location = new Point(44, 125);
+            richTextBox1.Location = new Point(44, 39);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(437, 125);
             richTextBox1.TabIndex = 1;
             richTextBox1.Text = "";
+            // 
+            // richTextBox2
+            // 
+            richTextBox2.Location = new Point(44, 281);
+            richTextBox2.Name = "richTextBox2";
+            richTextBox2.Size = new Size(437, 125);
+            richTextBox2.TabIndex = 2;
+            richTextBox2.Text = "";
+            // 
+            // btnExceldenOku
+            // 
+            btnExceldenOku.Location = new Point(533, 281);
+            btnExceldenOku.Name = "btnExceldenOku";
+            btnExceldenOku.Size = new Size(171, 83);
+            btnExceldenOku.TabIndex = 3;
+            btnExceldenOku.Text = "Excel'dən oxu və DataBase`ə yaz";
+            btnExceldenOku.UseVisualStyleBackColor = true;
+            btnExceldenOku.Click += button1_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnExceldenOku);
+            Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(btnVTdenOku);
             Name = "Form1";
@@ -66,5 +88,7 @@
 
         private Button btnVTdenOku;
         private RichTextBox richTextBox1;
+        private RichTextBox richTextBox2;
+        private Button btnExceldenOku;
     }
 }

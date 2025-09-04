@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ExcelVTIntegrationProject")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57e60f1bd173f8b5d956a9f4c12ef902e01f4ffc")]
 [assembly: System.Reflection.AssemblyProductAttribute("ExcelVTIntegrationProject")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ExcelVTIntegrationProject")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

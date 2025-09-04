@@ -1,4 +1,5 @@
-﻿using Microsoft.Data.SqlClient; 
+﻿using Microsoft.Data.SqlClient;
+using System.Collections;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelVTIntegrationProject
@@ -23,10 +24,10 @@ namespace ExcelVTIntegrationProject
 
             string[] columnNames = { "PersonalsNo", "Ad", "Soyad", "Rayon", "Şəhər" };
             Excel.Range range;
-            for (int i = 0; i <columnNames.Length; i++)
+            for (int i = 0; i < columnNames.Length; i++)
             {
-                 range  = worksheet.Cells[1, i + 1];
-                 range.Value2 = columnNames[i];
+                range = worksheet.Cells[1, i + 1];
+                range.Value2 = columnNames[i];
             }
             try
             {
@@ -66,8 +67,59 @@ namespace ExcelVTIntegrationProject
             {
                 if (sqlConnection != null)
                 {
-                sqlConnection.Close();                    
+                    sqlConnection.Close();
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Excel.Application excelApp;
+            Excel.Workbook excelworkbook;
+            Excel.Worksheet excelworksheet;
+            Excel.Range range;
+            int rowCount = 0;
+            int colmnCount = 0;
+            excelApp = new Excel.Application();
+            excelworkbook = excelApp.Workbooks.Open("D:\\Csharp-Sqlserver-Projects\\ExcelVTIntegrationProject\\test.xlsx");
+            excelworksheet = excelworkbook.Worksheets.get_Item(1);
+            range = excelworksheet.UsedRange;
+
+            richTextBox2.Clear();
+
+            for (rowCount = 2; rowCount <= range.Rows.Count; rowCount++)
+            {
+                ArrayList arrayList = new ArrayList();
+                for (colmnCount = 1; colmnCount <= range.Columns.Count; colmnCount++)
+                {
+                    string readCell = Convert.ToString((range.Cells[rowCount, colmnCount] as Excel.Range).Value2);
+                    richTextBox2.Text = richTextBox2.Text + readCell + "  ";
+                    arrayList.Add(readCell);
+                }
+                richTextBox2.Text = richTextBox2.Text + "\n";
+            }
+            excelApp.Quit();
+            ReleaseObject(excelworksheet);
+            ReleaseObject(excelworkbook);
+            ReleaseObject(excelApp);
+
+
+        }
+
+        private void ReleaseObject(object obj)
+        {
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+                obj = null;
+            }
+            catch (Exception ex)
+            {
+                obj = null;
+            }
+            finally
+            {
+                GC.Collect();
             }
         }
     }
