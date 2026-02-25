@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Collections;
+using System.Data;
 using Excel = Microsoft.Office.Interop.Excel;
 
 namespace ExcelVTIntegrationProject
@@ -84,7 +85,6 @@ namespace ExcelVTIntegrationProject
             excelworkbook = excelApp.Workbooks.Open("D:\\Csharp-Sqlserver-Projects\\ExcelVTIntegrationProject\\test.xlsx");
             excelworksheet = excelworkbook.Worksheets.get_Item(1);
             range = excelworksheet.UsedRange;
-
             richTextBox2.Clear();
 
             for (rowCount = 2; rowCount <= range.Rows.Count; rowCount++)
@@ -97,13 +97,36 @@ namespace ExcelVTIntegrationProject
                     arrayList.Add(readCell);
                 }
                 richTextBox2.Text = richTextBox2.Text + "\n";
+
+                try
+                {
+                    sqlConnection.Open();
+
+                    SqlCommand sqlCommand = new SqlCommand(
+     "Insert into Personal (PersonalsNo, Ad, Soyad, Rayon, Şəhər) values (@PersonalsNo, @Ad, @Soyad, @Rayon, @Şəhər)", sqlConnection);
+
+                    sqlCommand.Parameters.AddWithValue("@PersonalsNo", arrayList[0]); // Excel-in birinci sütunu
+                    sqlCommand.Parameters.AddWithValue("@Ad", arrayList[1]);
+                    sqlCommand.Parameters.AddWithValue("@Soyad", arrayList[2]);
+                    sqlCommand.Parameters.AddWithValue("@Rayon", arrayList[3]);
+                    sqlCommand.Parameters.AddWithValue("@Şəhər", arrayList[4]);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Sql Qury sırasında problem oldu, Xəta Kodu:SQLREAD02 \n" + ex.ToString());
+                }
+                finally
+                {
+                    if (sqlConnection.State == ConnectionState.Open)
+                    {
+                        sqlConnection.Close();
+                    }
+                }
             }
             excelApp.Quit();
             ReleaseObject(excelworksheet);
             ReleaseObject(excelworkbook);
             ReleaseObject(excelApp);
-
-
         }
 
         private void ReleaseObject(object obj)
